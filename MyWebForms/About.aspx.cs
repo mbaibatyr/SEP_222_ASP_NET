@@ -11,7 +11,10 @@ namespace MyWebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["value_1"] != null)
+                tb_1.Text = Session["value_1"].ToString();
+            if (Session["value_2"] != null)
+                tb_2.Text = Session["value_2"].ToString();
         }
 
         protected void bt_result_Click(object sender, EventArgs e)
@@ -21,3 +24,9 @@ namespace MyWebForms
         }
     }
 }
+
+
+/*
+ 
+ https://github.com/mbaibatyr/SEP_222_ASP_NET.git
+ */
