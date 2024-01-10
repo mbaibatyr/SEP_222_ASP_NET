@@ -4,4 +4,7 @@
 
     <asp:Button ID="Button1" runat="server" Text="go to about" OnClick="Button1_Click" />
     <a href="about.aspx">прыг</a>
-</asp:Content>
+    <br><br>
+    <asp:Table ID="Table1" runat="server"></asp:Table>
+    <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>
+    </asp:Content>
