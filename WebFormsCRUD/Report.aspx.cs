@@ -42,8 +42,7 @@ namespace WebFormsCRUD
                 using (XLWorkbook wb = new XLWorkbook())
                 {
                     var ws = wb.AddWorksheet(getData(), "report");
-                    //ws.Cell(1, 1).Value = "Id";
-                    //ws.Cell(1, 2).Value = "Name";
+                    ws.Columns("B").AdjustToContents();
                     using (MemoryStream ms = new MemoryStream())
                     {
                         wb.SaveAs(ms);
