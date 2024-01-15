@@ -17,7 +17,7 @@ namespace WebFormsCRUD
         protected DataTable getData()
         {
             DataTable dt = new DataTable();
-            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["db"]))
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
             {
                 db.Open();
                 using (SqlCommand cmd = new SqlCommand("select * from city", db))

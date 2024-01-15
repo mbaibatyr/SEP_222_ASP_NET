@@ -85,7 +85,7 @@ namespace WebFormsCRUD
 
         protected void cbReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Report.aspx?param1=excel");
         }
     }
 }
