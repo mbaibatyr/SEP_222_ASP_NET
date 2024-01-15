@@ -26,13 +26,18 @@
                             <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
                             <asp:Button ID="btAdd" runat="server" Text="Add" OnClick="btAdd_Click" />
                             <asp:Button ID="btEdit" runat="server" Text="Edit" OnClick="btEdit_Click" />
-                            <asp:Button ID="btDelete" runat="server" Text="Delete" />
+                            <asp:Button ID="btDelete" runat="server" Text="Delete" OnClick="btDelete_Click" />
                             <asp:HiddenField ID="hfId" runat="server" />
 
                         </asp:Panel>
                     </td>
                     <td>
-                        <asp:Panel ID="Panel4" runat="server" Height="78px" Width="386px" BackColor="#FFFF99"></asp:Panel>
+                        <asp:Panel ID="Panel4" runat="server" Height="78px" Width="386px" BackColor="#FFFF99">
+                            <asp:DropDownList ID="cbReportType" runat="server" AutoPostBack="True" Height="64px" OnSelectedIndexChanged="cbReportType_SelectedIndexChanged" Width="197px">
+                                <asp:ListItem>Excel</asp:ListItem>
+                                <asp:ListItem>CSV</asp:ListItem>
+                            </asp:DropDownList>
+                        </asp:Panel>
 
                     </td>
                 </tr>

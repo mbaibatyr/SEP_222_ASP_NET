@@ -16,7 +16,10 @@ namespace WebFormsCRUD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Page.IsPostBack)
+                return;
+            gvCity.DataSource = getData();
+            gvCity.DataBind();
         }
 
         protected void btSearch_Click(object sender, EventArgs e)
@@ -64,6 +67,25 @@ namespace WebFormsCRUD
             tbName.Text = gvCity.DataKeys[gvCity.SelectedIndex].Values[1].ToString();
             hfId.Value = gvCity.DataKeys[gvCity.SelectedIndex].Values[0].ToString();
             
+        }
+
+        protected void btDelete_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<int>("pCity;5", new { id = hfId.Value }, commandType: CommandType.StoredProcedure);
+                if (result > 0)
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+                tbName.Text = "";
+            }
+        }
+
+        protected void cbReportType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

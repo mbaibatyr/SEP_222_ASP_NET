@@ -123,6 +123,15 @@ namespace WebFormsCRUD
         protected global::System.Web.UI.WebControls.Panel Panel4;
 
         /// <summary>
+        /// cbReportType элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cbReportType;
+
+        /// <summary>
         /// gvCity элемент управления.
         /// </summary>
         /// <remarks>
