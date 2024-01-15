@@ -18,7 +18,7 @@
                     <td>
                         <asp:Panel ID="Panel2" runat="server" Height="78px" Width="386px" BackColor="#FF9999">
                             <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
-                            <asp:Button ID="btSearch" runat="server" Text="Search" />
+                            <asp:Button ID="btSearch" runat="server" Text="Search" OnClick="btSearch_Click" />
                         </asp:Panel>
                     </td>
                     <td>
@@ -30,9 +30,10 @@
                     </td>
                 </tr>
             </table>
-
-
         </asp:Panel>
+        <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+
+       
     </form>
 </body>
 </html>

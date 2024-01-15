@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsCRUD.Model;
 
 namespace WebFormsCRUD
 {
@@ -13,5 +15,19 @@ namespace WebFormsCRUD
         {
 
         }
+
+        protected void btSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        List<City> getData()
+        {
+            using (SqlConnection )
+            {
+
+            }
+        }
+
     }
 }
