@@ -26,6 +26,7 @@
                             <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
                             <asp:Button ID="btAdd" runat="server" Text="Add" OnClick="btAdd_Click" />
                             <asp:Button ID="btEdit" runat="server" Text="Edit" OnClick="btEdit_Click" />
+                            <asp:Button ID="btDelete" runat="server" Text="Delete" />
                             <asp:HiddenField ID="hfId" runat="server" />
 
                         </asp:Panel>

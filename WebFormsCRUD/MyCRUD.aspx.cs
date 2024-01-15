@@ -48,7 +48,15 @@ namespace WebFormsCRUD
 
         protected void btEdit_Click(object sender, EventArgs e)
         {
-
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<string>("pCity;4", new { id = hfId.Value, name = tbName.Text }, commandType: CommandType.StoredProcedure);
+                if (result == "ok")
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+            }
         }
 
         protected void gvCity_SelectedIndexChanged(object sender, EventArgs e)

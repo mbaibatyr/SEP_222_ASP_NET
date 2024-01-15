@@ -96,6 +96,15 @@ namespace WebFormsCRUD
         protected global::System.Web.UI.WebControls.Button btEdit;
 
         /// <summary>
+        /// btDelete элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btDelete;
+
+        /// <summary>
         /// hfId элемент управления.
         /// </summary>
         /// <remarks>
