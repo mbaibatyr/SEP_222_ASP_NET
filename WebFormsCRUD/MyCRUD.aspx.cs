@@ -66,7 +66,7 @@ namespace WebFormsCRUD
         {
             tbName.Text = gvCity.DataKeys[gvCity.SelectedIndex].Values[1].ToString();
             hfId.Value = gvCity.DataKeys[gvCity.SelectedIndex].Values[0].ToString();
-            
+
         }
 
         protected void btDelete_Click(object sender, EventArgs e)
@@ -85,7 +85,8 @@ namespace WebFormsCRUD
 
         protected void cbReportType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect("~/Report.aspx?param1=excel");
+            if (cbReportType.SelectedIndex == 0)
+                Response.Redirect("~/Report.aspx?param1=excel");
         }
     }
 }

@@ -33,7 +33,7 @@
                     </td>
                     <td>
                         <asp:Panel ID="Panel4" runat="server" Height="78px" Width="386px" BackColor="#FFFF99">
-                            <asp:DropDownList ID="cbReportType" runat="server" AutoPostBack="True" Height="64px" OnSelectedIndexChanged="cbReportType_SelectedIndexChanged" Width="197px">
+                            <asp:DropDownList ID="cbReportType" runat="server" AutoPostBack="True" OnSelectedIndexChanged="cbReportType_SelectedIndexChanged" Width="197px">
                                 <asp:ListItem>Excel</asp:ListItem>
                                 <asp:ListItem>CSV</asp:ListItem>
                             </asp:DropDownList>
