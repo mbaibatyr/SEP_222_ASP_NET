@@ -33,5 +33,29 @@ namespace WebFormsCRUD
             }
         }
 
+        protected void btAdd_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["conStr"]))
+            {
+                var result = db.ExecuteScalar<string>("pCity;3", new { name = tbName.Text }, commandType: CommandType.StoredProcedure);
+                if (result == "ok")
+                {
+                    gvCity.DataSource = getData();
+                    gvCity.DataBind();
+                }
+            }
+        }
+
+        protected void btEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gvCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbName.Text = gvCity.DataKeys[gvCity.SelectedIndex].Values[1].ToString();
+            hfId.Value = gvCity.DataKeys[gvCity.SelectedIndex].Values[0].ToString();
+            
+        }
     }
 }

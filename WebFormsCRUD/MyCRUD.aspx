@@ -22,7 +22,13 @@
                         </asp:Panel>
                     </td>
                     <td>
-                        <asp:Panel ID="Panel3" runat="server" Height="78px" Width="386px" BackColor="#00FFCC"></asp:Panel>
+                        <asp:Panel ID="Panel3" runat="server" Height="78px" Width="386px" BackColor="#00FFCC">
+                            <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
+                            <asp:Button ID="btAdd" runat="server" Text="Add" OnClick="btAdd_Click" />
+                            <asp:Button ID="btEdit" runat="server" Text="Edit" OnClick="btEdit_Click" />
+                            <asp:HiddenField ID="hfId" runat="server" />
+
+                        </asp:Panel>
                     </td>
                     <td>
                         <asp:Panel ID="Panel4" runat="server" Height="78px" Width="386px" BackColor="#FFFF99"></asp:Panel>
@@ -33,7 +39,7 @@
         </asp:Panel>
         <asp:GridView ID="gvCity" runat="server" CssClass="GridView_With_GridLines" DataKeyNames="id,name"
             AllowPaging="True" BackColor="White" BorderColor="#3366CC" BorderStyle="None"
-            BorderWidth="1px" CellPadding="4" PageSize="21" AutoGenerateColumns="False">
+            BorderWidth="1px" CellPadding="4" PageSize="21" AutoGenerateColumns="False" OnSelectedIndexChanged="gvCity_SelectedIndexChanged">
             <RowStyle BackColor="White" ForeColor="#003399" />
             <SelectedRowStyle BackColor="#FFD789" BorderStyle="Groove" BorderWidth="2" />
             <PagerSettings Position="TopAndBottom" />
@@ -62,7 +68,7 @@
             <SortedDescendingHeaderStyle BackColor="#002876" />
         </asp:GridView>
 
-       
+
     </form>
 </body>
 </html>
