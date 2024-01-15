@@ -1,5 +1,10 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +14,22 @@ namespace WebFormsCRUD
 {
     public partial class Report : System.Web.UI.Page
     {
+        protected DataTable getData()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection db = new SqlConnection(ConfigurationManager.AppSettings["db"]))
+            {
+                db.Open();
+                using (SqlCommand cmd = new SqlCommand("select * from city", db))
+                {
+                    dt.Load(cmd.ExecuteReader());
+                }
+                db.Close();
+
+            }
+            return dt;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["param1"] == "excel")
