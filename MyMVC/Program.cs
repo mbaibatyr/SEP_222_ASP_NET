@@ -24,7 +24,11 @@ namespace MyMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=MyMethod}/{id?}");
+                pattern: "{controller=My}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "default2",
+                pattern: "{controller}/{action}/{name1}/{name2}");
 
             app.Run();
         }

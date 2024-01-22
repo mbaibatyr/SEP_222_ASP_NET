@@ -1,11 +1,23 @@
-﻿@{
-    Layout = null;
-}
+﻿@model IEnumerable<City>
 
-<h2>@ViewData["param1"]</h2>
-<p>@ViewBag.param3</p>
+@*@{
+    Layout = null;
+}*@
+
+@*<h2>@ViewData["param1"]</h2>
+<p>@ViewBag.param3</p>*@
 
 @{
+     foreach (var item in @Model)
+    {
+        @Html.Raw("<li>" + item.Id + " - " + item.Name + "</li>");       
+    }    
+}
+
+
+@{
+
+
     //var student = (ViewData["param4"] as City);
     //var id = student.Id;
     //var name = student.Name;
@@ -15,12 +27,12 @@
     //var id = student.Id;
     //var name = student.Name;
 
-    var lst = (ViewData["param5"] as List<Student>);
-    foreach (var item in lst)
-    {
-        //@Html.Raw("<li>" + item.Id + " - " + item.Name + "</li>");
-        @item.Name;
-    }
+    //var lst = (ViewData["param5"] as List<Student>);
+    //foreach (var item in lst)
+    //{
+    //    //@Html.Raw("<li>" + item.Id + " - " + item.Name + "</li>");
+    //    @item.Name;
+    //}
 
 }
 

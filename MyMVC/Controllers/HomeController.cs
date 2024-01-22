@@ -23,6 +23,17 @@ namespace MyMVC.Controllers
             return View();
         }
 
+        public IActionResult GetJson()
+        {
+            return Json(new Student { Id=1, Name="qwerty"});
+        }
+
+        [HttpPost]
+        public IActionResult PostJson(Student student)
+        {
+            return Json(student);
+        }
+
         public IActionResult MyMethod()
         {
             ViewData["param1"] = "hello";
@@ -41,7 +52,14 @@ namespace MyMVC.Controllers
                 new Student{Id=2, Name="22222"}
             };
 
-            return View();
+            List<City> model = new List<City>()
+            {
+                new City{ Id=1, Name="111111"},
+                new City{ Id=2, Name="222222"},
+                new City{ Id=3, Name="333333"}
+            };
+
+            return View(model);
         }
 
     }
