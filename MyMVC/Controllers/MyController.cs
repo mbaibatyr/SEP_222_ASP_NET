@@ -123,7 +123,7 @@ namespace MyMVC.Controllers
 
                     ws.Cell(2, 1).InsertData(lst);
                     ws.RangeUsed().SetAutoFilter();
-                    ws.Columns("A", "G").AdjustToContents();
+                    ws.Columns("A", "B").AdjustToContents();
 
                     ws.SheetView.FreezeRows(1);
                     wb.SaveAs(ms);
