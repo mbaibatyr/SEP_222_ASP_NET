@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClosedXML.Excel;
+using Microsoft.AspNetCore.Mvc;
 using MyMVC.Models;
 
 namespace MyMVC.Controllers
@@ -54,7 +55,7 @@ namespace MyMVC.Controllers
             string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images/1.png");
             FileStream fs = new FileStream(path, FileMode.Open);
             string file_type = "image/jpeg";
-            string file_name = "1.png";
+            string file_name = "10000.png";
             return File(fs, file_type, file_name);
 
            
@@ -88,5 +89,54 @@ namespace MyMVC.Controllers
         {
             return Content(id);
         }
+
+        [HttpPut, Route("PutIndex/{param1}")]
+        public ActionResult PutIndex(string param1, Student model)
+        {
+            return Content($"{param1} - {model.Id} - {model.Name}");
+        }
+
+        [HttpGet, Route("GetExcel")]
+        public ActionResult GetExcel()
+        {
+            using (var ms = new MemoryStream())
+            {
+                using (XLWorkbook wb = new XLWorkbook())
+                {
+                    var ws = wb.AddWorksheet("report");
+                    ws.Cell(1, 1).Value = "Id";
+                    ws.Cell(1, 1).Style.Font.Bold = true;
+                    ws.Cell(1, 1).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+
+                    ws.Cell(1, 2).Value = "Name";
+                    ws.Cell(1, 2).Style.Font.Bold = true;
+                    ws.Cell(1, 2).Style.Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center);
+
+                    //ws.Column(1).Width = 25;
+                    //ws.Column(2).Width = 15;
+
+                    List<Student> lst = new List<Student>()
+                    {
+                        new Student{Id=1, Name="Иванов" },
+                        new Student{Id=2, Name="Петров" }
+                    };
+
+                    ws.Cell(2, 1).InsertData(lst);
+                    ws.RangeUsed().SetAutoFilter();
+                    ws.Columns("A", "G").AdjustToContents();
+
+                    ws.SheetView.FreezeRows(1);
+                    wb.SaveAs(ms);
+                    ms.Position = 0;
+                    ms.Flush();
+                    var bytes = ms.ToArray();
+
+                    return File(bytes,
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "report____" + DateTime.Now.ToString("ddMMyyyy_hhmmss") + ".xlsx");
+                }
+            }
+        }
+
     }
 }
