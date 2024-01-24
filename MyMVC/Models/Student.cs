@@ -2,8 +2,10 @@
 {
     public class Student
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int id { get; set; }
+        public string lastName { get; set; }
+        public string firstName { get; set; }
+        public DateTime birthDate { get; set; }
     }
 
     public class City

@@ -1,13 +1,20 @@
-﻿using MyMVC.Abstract;
+﻿using Dapper;
+using MyMVC.Abstract;
 using MyMVC.Models;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace MyMVC.Service
 {
     public class StudentService : IStudent
     {
+        readonly string conStr = "Server=206-P;Database=testdb;Trusted_Connection=True;";
         public IEnumerable<Student> getStudentAll()
         {
-            throw new NotImplementedException();
+            using (SqlConnection db = new SqlConnection(conStr))
+            {
+                return db.Query<Student>("pStudent", commandType: CommandType.StoredProcedure);
+            }
         }
 
         public Student getStudentById(string id)

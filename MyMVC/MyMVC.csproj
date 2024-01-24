@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="Dapper" Version="2.1.28" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
 </Project>
