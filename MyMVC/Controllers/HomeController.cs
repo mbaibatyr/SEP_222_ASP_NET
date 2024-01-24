@@ -25,7 +25,8 @@ namespace MyMVC.Controllers
 
         public IActionResult GetJson()
         {
-            return Json(new Student { Id=1, Name="qwerty"});
+            //return Json(new Student { Id=1, Name="qwerty"});
+            return Json(null);
         }
 
         [HttpPost]
@@ -40,17 +41,17 @@ namespace MyMVC.Controllers
             ViewData["param2"] = "STEP";
             ViewBag.param3 = "Hello world";
 
-            ViewData["param4"] = new Student
-            {
-                Id = 1,
-                Name = "qwerty"
-            };
+            //ViewData["param4"] = new Student
+            //{
+            //    Id = 1,
+            //    Name = "qwerty"
+            //};
 
-            ViewData["param5"] = new List<Student>()
-            {
-                new Student{Id=1, Name="11111"},
-                new Student{Id=2, Name="22222"}
-            };
+            //ViewData["param5"] = new List<Student>()
+            //{
+            //    new Student{Id=1, Name="11111"},
+            //    new Student{Id=2, Name="22222"}
+            //};
 
             List<City> model = new List<City>()
             {

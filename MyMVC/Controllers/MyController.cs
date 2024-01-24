@@ -93,7 +93,8 @@ namespace MyMVC.Controllers
         [HttpPut, Route("PutIndex/{param1}")]
         public ActionResult PutIndex(string param1, Student model)
         {
-            return Content($"{param1} - {model.Id} - {model.Name}");
+            //return Content($"{param1} - {model.Id} - {model.Name}");
+            return Content("");
         }
 
         [HttpGet, Route("GetExcel")]
@@ -115,13 +116,14 @@ namespace MyMVC.Controllers
                     //ws.Column(1).Width = 25;
                     //ws.Column(2).Width = 15;
 
-                    List<Student> lst = new List<Student>()
-                    {
-                        new Student{Id=1, Name="Иванов" },
-                        new Student{Id=2, Name="Петров" }
-                    };
+                    //List<Student> lst = new List<Student>()
+                    //{
+                    //    new Student{Id=1, Name="Иванов" },
+                    //    new Student{Id=2, Name="Петров" }
+                    //};
 
-                    ws.Cell(2, 1).InsertData(lst);
+                    //ws.Cell(2, 1).InsertData(lst);
+                    //ws.Cell(2, 1).InsertData(null);
                     ws.RangeUsed().SetAutoFilter();
                     ws.Columns("A", "B").AdjustToContents();
 

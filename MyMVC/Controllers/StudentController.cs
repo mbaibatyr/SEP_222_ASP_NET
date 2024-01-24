@@ -1,14 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyMVC.Abstract;
+using MyMVC.Service;
 
 namespace MyMVC.Controllers
 {
     public class StudentController : Controller
     {
-
-
-        public IActionResult Index()
+        IStudent service;
+        public StudentController(/*IStudent service*/)
         {
-            return View();
+            this.service = new StudentService();
+        }
+
+        [HttpGet, Route("getStudentAll")]
+        public ActionResult getStudentAll()        
+        {
+            return Ok(service.getStudentAll());
+        }
+
+        [HttpGet, Route("getStudentById/{id}")]
+        public ActionResult getStudentById(string id)
+        {
+            return Ok(service.getStudentById(id));
         }
     }
 }

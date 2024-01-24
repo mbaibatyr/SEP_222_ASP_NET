@@ -19,7 +19,10 @@ namespace MyMVC.Service
 
         public Student getStudentById(string id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection db = new SqlConnection(conStr))
+            {
+                return db.Query<Student>("pStudent;2", new { id = id }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
         }
 
         public Result StudentAdd(Student model)
