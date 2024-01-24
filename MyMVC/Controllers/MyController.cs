@@ -49,14 +49,17 @@ namespace MyMVC.Controllers
 
         [HttpGet, Route("FileIndex")]
         public ActionResult FileIndex()
-        {            
-            var path = @"C:\Temp\1.jpg";
-            FileInfo info = new FileInfo(path);
-            var res = info.Exists;
+        {
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "images/1.png");
+            FileStream fs = new FileStream(path, FileMode.Open);
+            string file_type = "image/jpeg";
+            string file_name = "1.png";
+            return File(fs, file_type, file_name);
+
+           
 
 
-             
-            return File(path, "image/jpeg");
 
             //string name = "me.txt";
 
