@@ -2,11 +2,12 @@
 
 namespace MyRazor.Abstract
 {
-    public interface IPhoto
+    public interface IPhoto <T> where T : class
     {
-        IEnumerable<Photo> GetPhotoAllorById(string id);
-        Status AddOrEditPhoto(Photo model);
-    }
+        IEnumerable<T> GetPhotoAllorById(string id);
+        Status AddOrEditPhoto(T model);
+		T GetPhotoById(string id);
+	}
 }
 
 /*
