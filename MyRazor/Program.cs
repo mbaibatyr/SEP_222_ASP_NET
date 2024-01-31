@@ -1,3 +1,7 @@
+using MyRazor.Abstract;
+using MyRazor.Models;
+using MyRazor.Service;
+
 namespace MyRazor
 {
     public class Program
@@ -8,6 +12,7 @@ namespace MyRazor
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IPhoto<Photo>, PhotoService>();
 
             var app = builder.Build();
 

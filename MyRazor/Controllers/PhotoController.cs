@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MyRazor.Abstract;
+using MyRazor.Models;
 
 namespace MyRazor.Controllers
 {
     public class PhotoController : Controller
     {
-        // GET: PhotoController
-        public ActionResult Index()
+        IPhoto<Photo> service;
+        public PhotoController(IPhoto<Photo> service)
         {
-            return View();
+            this.service = service;
+        }
+        
+        public ActionResult Index()
+        {            
+            return View(service.GetPhotoAllorById("0"));
         }
 
         // GET: PhotoController/Details/5
