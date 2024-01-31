@@ -12,9 +12,9 @@ namespace MyRazor.Controllers
         {
             this.service = service;
         }
-        
+
         public ActionResult Index()
-        {            
+        {
             return View(service.GetPhotoAllorById("0"));
         }
 
@@ -30,19 +30,13 @@ namespace MyRazor.Controllers
             return View();
         }
 
-        // POST: PhotoController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Photo model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var status = service.AddOrEditPhoto(model);
+            if (status.status == StatusEnum.OK)
+                return RedirectToAction("index");
+            return View();
         }
 
         // GET: PhotoController/Edit/5
