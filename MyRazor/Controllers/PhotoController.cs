@@ -36,20 +36,19 @@ namespace MyRazor.Controllers
             var status = service.AddOrEditPhoto(model);
             if (status.status == StatusEnum.OK)
                 return RedirectToAction("index");
-            ModelState.AddModelError("", "Такое имя и расширение уже существуют");
+            ModelState.AddModelError("Name", "Такое имя и расширение уже существуют");
             return View();
         }
 
-        // GET: PhotoController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
+        public ActionResult Edit(string id)
+        {            
+            return View(service.GetPhotoById(id));
         }
 
         // POST: PhotoController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Photo model)
         {
             try
             {

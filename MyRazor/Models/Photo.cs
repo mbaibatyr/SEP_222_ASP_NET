@@ -1,4 +1,6 @@
-﻿namespace MyRazor.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyRazor.Models
 {
     public class Photo
     {
@@ -7,6 +9,7 @@
         public string Extension { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
+        [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
     }
 

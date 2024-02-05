@@ -45,7 +45,10 @@ namespace MyRazor.Service
 
         public Photo GetPhotoById(string id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection db = new SqlConnection(config["conStr"]))
+            {
+                return db.Query<Photo>("pPhoto", new { id = id }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
         }
     }
 }
