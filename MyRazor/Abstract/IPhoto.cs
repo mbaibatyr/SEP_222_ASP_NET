@@ -12,6 +12,15 @@ namespace MyRazor.Abstract
 
 /*
  
+CREATE TABLE [dbo].[Photo] (
+	[Id][int] IDENTITY primary key,
+	[Name] [nvarchar] (1000),
+	[Extension][varchar] (10),
+	[Width][int],
+	[Height][int],
+	[DateCreated][datetime])
+
+
  ALTER proc [dbo].[pPhoto] -- GetPhotoAllorById
 @id int
 as

@@ -32,10 +32,11 @@ namespace MyRazor.Controllers
 
         [HttpPost]
         public ActionResult Create(Photo model)
-        {
+        {            
             var status = service.AddOrEditPhoto(model);
             if (status.status == StatusEnum.OK)
                 return RedirectToAction("index");
+            ModelState.AddModelError("", "Такое имя и расширение уже существуют");
             return View();
         }
 
