@@ -19,9 +19,9 @@ namespace MyRazor.Controllers
         }
 
         // GET: PhotoController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            return View(service.GetPhotoById(id));
         }
 
         // GET: PhotoController/Create
@@ -52,10 +52,15 @@ namespace MyRazor.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var status = service.AddOrEditPhoto(model);
+                if (status.status == StatusEnum.OK)
+                    return RedirectToAction("index");
+                ModelState.AddModelError("Name", "Error");
+                return View();
             }
-            catch
+            catch(Exception err)
             {
+                ModelState.AddModelError("Name", err.Message);
                 return View();
             }
         }
