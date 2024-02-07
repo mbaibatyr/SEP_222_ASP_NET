@@ -48,6 +48,11 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<form action="/Photo/Create" method="post">
+    <input type="text" value="step" id="name" name="NAME2" />
+    <input type="submit" value="Create" class="btn btn-primary" />
+</form>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -24,7 +24,6 @@ namespace MyRazor.Controllers
             return View(service.GetPhotoById(id));
         }
 
-        // GET: PhotoController/Create
         public ActionResult Create()
         {
             return View();
@@ -32,16 +31,20 @@ namespace MyRazor.Controllers
 
         [HttpPost]
         public ActionResult Create(Photo model)
-        {            
-            var status = service.AddOrEditPhoto(model);
-            if (status.status == StatusEnum.OK)
-                return RedirectToAction("index");
-            ModelState.AddModelError("Name", "Такое имя и расширение уже существуют");
+        {
+            if (model.Name != "step")
+                ModelState.AddModelError("", "Вы ввели в поле Name не STEP");
+            if (model.Extension != "step")
+                ModelState.AddModelError("", "Вы ввели поле Extension не STEP");
+            //var status = service.AddOrEditPhoto(model);
+            //if (status.status == StatusEnum.OK)
+            //    return RedirectToAction("index");
+            //ModelState.AddModelError("Name", "Такое имя и расширение уже существуют");
             return View();
         }
 
         public ActionResult Edit(string id)
-        {            
+        {
             return View(service.GetPhotoById(id));
         }
 
@@ -58,7 +61,7 @@ namespace MyRazor.Controllers
                 ModelState.AddModelError("Name", "Error");
                 return View();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 ModelState.AddModelError("Name", err.Message);
                 return View();
@@ -85,5 +88,13 @@ namespace MyRazor.Controllers
                 return View();
             }
         }
+
+        //public ActionResult MyCheck(string name)
+        //{
+        //    if (name == "step")
+        //        return Json(true);
+        //    return Json(false);
+        //}
+
     }
 }
