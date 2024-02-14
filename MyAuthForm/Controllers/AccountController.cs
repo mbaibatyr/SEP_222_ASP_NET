@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyAuthForm.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,7 +19,7 @@ namespace MyAuthForm.Controllers
         {
             this.config = config;
         }
-        
+
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
@@ -33,12 +34,12 @@ namespace MyAuthForm.Controllers
             using (SqlConnection db = new SqlConnection(config["conStr"]))
             {
                 var result = db.Query<dynamic>("pUsers;2", new { login = user.Login, pwd = user.Password }, commandType: CommandType.StoredProcedure).FirstOrDefault();
-                if(result == null)
+                if (result == null)
                 {
                     ModelState.AddModelError("", "Login failed. Please check Username and/or password");
                     return View();
                 }
-                
+
                 int id = result.id;
                 string login = result.login;
                 string role_name = result.role_name;
@@ -55,13 +56,13 @@ namespace MyAuthForm.Controllers
             }
             if (true)
             {
-                var claims = new[] { new Claim(ClaimTypes.Name, user.Login), 
-                    new Claim(ClaimTypes.Role, "admin"), 
+                var claims = new[] { new Claim(ClaimTypes.Name, user.Login),
+                    new Claim(ClaimTypes.Role, "admin"),
                     new Claim("c1", "text")
                 };
-                var identity = new ClaimsIdentity(claims, 
+                var identity = new ClaimsIdentity(claims,
                     CookieAuthenticationDefaults.AuthenticationScheme);
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(identity));
                 return Redirect("~/Home/Index");
             }
@@ -72,10 +73,32 @@ namespace MyAuthForm.Controllers
             }
         }
 
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            using (SqlConnection db = new SqlConnection(config["conStr"]))
+            {
+                var result = db.Query<Roles>("pUsers;3", commandType: CommandType.StoredProcedure);
+                ViewBag.role = new SelectList(result, "id", "name");
+                return View();
+            }
+            
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Register(User user)
         {
+            using (SqlConnection db = new SqlConnection(config["conStr"]))
+            {
+                DynamicParameters p = new DynamicParameters(user);
+                var result = db.Query<Roles>("pUsers", p, commandType: CommandType.StoredProcedure);
+                return Redirect("~/Home/Index");                
+            }
+
             return View();
         }
     }

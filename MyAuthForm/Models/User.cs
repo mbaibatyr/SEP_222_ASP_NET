@@ -8,5 +8,13 @@ namespace MyAuthForm.Models
         public string Login { get; set; }
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public string Role { get; set; }
     }
+
+    public class Roles
+    {
+        public string id { get; set; }
+        public string name { get; set; }
+    }
+
 }
