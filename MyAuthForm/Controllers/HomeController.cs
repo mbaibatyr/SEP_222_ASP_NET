@@ -18,8 +18,8 @@ namespace MyAuthForm.Controllers
 
         public IActionResult Index()
         {
-            var claim = User.FindFirstValue(ClaimTypes.Role);
-            var claim2 = User.FindFirstValue("c1");
+            ViewData["role"] = User.FindFirstValue(ClaimTypes.Role);
+            ViewBag.c1 = User.FindFirstValue("c1");
             return View();
         }
 
