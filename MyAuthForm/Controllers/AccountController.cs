@@ -26,7 +26,7 @@ namespace MyAuthForm.Controllers
              */
             if (true)
             {
-                var claims = new[] { new Claim(ClaimTypes.Name, user.Login) };
+                var claims = new[] { new Claim(ClaimTypes.Name, user.Login), new Claim(ClaimTypes.Role, "admin"), new Claim("c1", "text") };
                 var identity = new ClaimsIdentity(claims, 
                     CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
