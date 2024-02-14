@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyAuthForm.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace MyAuthForm.Controllers
 {
@@ -17,6 +18,8 @@ namespace MyAuthForm.Controllers
 
         public IActionResult Index()
         {
+            var claim = User.FindFirstValue(ClaimTypes.Role);
+            var claim2 = User.FindFirstValue("c1");
             return View();
         }
 
