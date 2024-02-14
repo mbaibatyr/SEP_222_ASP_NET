@@ -19,19 +19,23 @@ namespace MyAuthForm.Controllers
         public IActionResult Index()
         {
             ViewData["role"] = User.FindFirstValue(ClaimTypes.Role);
-            ViewBag.c1 = User.FindFirstValue("c1");
+            ViewBag.id = User.FindFirstValue("id");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            if (User.FindFirstValue(ClaimTypes.Role) != "admin")
+                return Redirect("~/Home/Error/UnAuthorized");
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+       
+
+        public ActionResult Error(string id)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewData["textError"] = id;
+            return View();
         }
     }
 }

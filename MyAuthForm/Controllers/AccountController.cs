@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using Dapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyAuthForm.Models;
+using System.Data;
+using System.Data.SqlClient;
 using System.Security.Claims;
 
 namespace MyAuthForm.Controllers
@@ -10,6 +13,12 @@ namespace MyAuthForm.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        IConfiguration config;
+        public AccountController(IConfiguration config)
+        {
+            this.config = config;
+        }
+        
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Login()
@@ -21,9 +30,29 @@ namespace MyAuthForm.Controllers
         [AllowAnonymous]
         public ActionResult Login(User user)
         {
-            /*
-             проверка в БД
-             */
+            using (SqlConnection db = new SqlConnection(config["conStr"]))
+            {
+                var result = db.Query<dynamic>("pUsers;2", new { login = user.Login, pwd = user.Password }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                if(result == null)
+                {
+                    ModelState.AddModelError("", "Login failed. Please check Username and/or password");
+                    return View();
+                }
+                
+                int id = result.id;
+                string login = result.login;
+                string role_name = result.role_name;
+                var claims = new[] { new Claim(ClaimTypes.Name, user.Login),
+                    new Claim(ClaimTypes.Role, role_name),
+                    new Claim("id", id.ToString())
+                };
+                var identity = new ClaimsIdentity(claims,
+                    CookieAuthenticationDefaults.AuthenticationScheme);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(identity));
+                return Redirect("~/Home/Index");
+
+            }
             if (true)
             {
                 var claims = new[] { new Claim(ClaimTypes.Name, user.Login), 
