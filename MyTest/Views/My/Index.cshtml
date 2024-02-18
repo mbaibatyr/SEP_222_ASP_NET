@@ -1,0 +1,48 @@
+﻿@*@model IEnumerable<Book>;*@
+
+@model Book;
+
+@using MyTest.Models;
+@using System.Collections
+
+@*<h2>@ViewData["key1"]
+@ViewData["key2"]</h2>
+
+@{
+    var book = @ViewData["key3"] as Book;
+    var id = book.Id;
+    var cost = book.Cost;
+    var title = book.Title;
+}
+
+@{
+    var books = ViewData["key4"] as IEnumerable<Book>;
+
+    foreach (Book item in books)
+    {
+        @Html.Raw("<li>" + item.Id + " " +item.Title + "</li>");
+    }
+}
+
+@{
+    foreach (Book item in Model)
+    {
+        @Html.Raw("<li>" + item.Id + " " +item.Title + "</li>");
+    }
+}*@
+
+@*<h2>@id</h2>
+<h2>@title</h2>
+<h2>@cost</h2>*@
+
+@using (Html.BeginForm("Index", "My", FormMethod.Post))
+{
+    @Html.ValidationSummary();
+    @Html.TextBoxFor(m => m.Id, new { @class = "form-control" });
+    <br />
+    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" });
+    <br />
+    @Html.TextBoxFor(m => m.Cost, new { @class = "form-control" });
+
+    <input type="submit" value="Send"/>
+}
