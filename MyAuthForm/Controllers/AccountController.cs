@@ -81,11 +81,18 @@ namespace MyAuthForm.Controllers
         {
             using (SqlConnection db = new SqlConnection(config["conStr"]))
             {
-                var result = db.Query<Roles>("pUsers;3", commandType: CommandType.StoredProcedure);
-                ViewBag.role = new SelectList(result, "id", "name");
+                //var result = db.Query<Roles>("pUsers;3", commandType: CommandType.StoredProcedure);
+                var result = new List<Roles>()
+                {
+                    new Roles{id="1", name="admin"},
+                    new Roles{id="2", name="sale"},
+                    new Roles{id="3", name="market"},
+                };
+
+                ViewBag.role = new SelectList(result, "id", "name", "3");
                 return View();
             }
-            
+
         }
 
         [HttpPost]
@@ -96,7 +103,7 @@ namespace MyAuthForm.Controllers
             {
                 DynamicParameters p = new DynamicParameters(user);
                 var result = db.Query<Roles>("pUsers", p, commandType: CommandType.StoredProcedure);
-                return Redirect("~/Home/Index");                
+                return Redirect("~/Home/Index");
             }
 
             return View();
