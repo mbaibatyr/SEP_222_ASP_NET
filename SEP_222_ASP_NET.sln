@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyTest", "MyTest\MyTest.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWindowsAuth", "MyWindowsAuth\MyWindowsAuth.csproj", "{789D5654-DD04-46A3-8421-27A5AACC340F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyIdent", "MyIdent\MyIdent.csproj", "{F8665DA5-2CE8-48DD-9B47-0FAFA1BC805C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{789D5654-DD04-46A3-8421-27A5AACC340F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{789D5654-DD04-46A3-8421-27A5AACC340F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{789D5654-DD04-46A3-8421-27A5AACC340F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8665DA5-2CE8-48DD-9B47-0FAFA1BC805C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8665DA5-2CE8-48DD-9B47-0FAFA1BC805C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8665DA5-2CE8-48DD-9B47-0FAFA1BC805C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8665DA5-2CE8-48DD-9B47-0FAFA1BC805C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
