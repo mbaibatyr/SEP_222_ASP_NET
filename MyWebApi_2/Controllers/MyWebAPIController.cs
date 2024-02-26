@@ -62,5 +62,13 @@ namespace MyWebApi_2.Controllers
             };
             return Ok(response);
         }
+
+        [HttpPost, Route("GetStudentViaPost")]
+        public ActionResult GetStudentViaPost(GetStudentViaPostRequest request)
+        {
+            if(string.IsNullOrEmpty(request.id?.ToString()))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.Id == request.id).FirstOrDefault());
+        }
     }
 }

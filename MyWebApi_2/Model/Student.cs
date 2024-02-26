@@ -28,4 +28,9 @@
         public Student Student { get; set; }
     }
 
+    public class GetStudentViaPostRequest
+    {
+        public int? id { get; set; }
+    }
+
 }
