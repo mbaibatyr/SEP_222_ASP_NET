@@ -7,4 +7,25 @@
         public string FirstName { get; set; }
         public DateTime DateBirth { get; set; }
     }
+
+    public class ResponseResult
+    {
+        public StatusEnum Status { get; set; }
+        public string Result { get; set; }
+        public string Error { get; set; }
+    }
+
+    public enum StatusEnum
+    {
+        OK = 1,
+        ERROR = 0,
+        CRITYCAL = -1
+    }
+
+    public class GetStudentByIdFullResponse
+    {
+        public ResponseResult Status { get; set; }
+        public Student Student { get; set; }
+    }
+
 }

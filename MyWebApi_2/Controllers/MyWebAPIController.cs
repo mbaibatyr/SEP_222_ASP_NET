@@ -39,5 +39,28 @@ namespace MyWebApi_2.Controllers
         {
             return Ok(lst.Where(z => z.Id == id).FirstOrDefault());
         }
+
+        [HttpGet, Route("getStudentAll")]
+        public ActionResult getStudentAll()
+        {
+            return Ok(lst);
+        }
+
+        [HttpGet, Route("getStudentByIdFull/{id}")]
+        public ActionResult getStudentByIdFull(int id)
+        {
+            var result = lst.Where(z => z.Id == id).FirstOrDefault();
+
+            GetStudentByIdFullResponse response = new GetStudentByIdFullResponse
+            {
+                Status = new ResponseResult
+                {
+                    Result = result == null ? "no data" : "ok",
+                    Status = result != null ? StatusEnum.OK : StatusEnum.ERROR
+                },
+                Student = result
+            };
+            return Ok(response);
+        }
     }
 }
