@@ -40,4 +40,10 @@
 
     }
 
+    public class QueryById
+    {
+        public string id { get; set; }
+        public string age { get; set; }
+    }
+
 }
