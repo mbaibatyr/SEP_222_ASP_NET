@@ -33,4 +33,11 @@
         public int? id { get; set; }
     }
 
+    public class GetStudentViaPostRequest2
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+    }
+
 }

@@ -66,9 +66,91 @@ namespace MyWebApi_2.Controllers
         [HttpPost, Route("GetStudentViaPost")]
         public ActionResult GetStudentViaPost(GetStudentViaPostRequest request)
         {
-            if(string.IsNullOrEmpty(request.id?.ToString()))
+            if (string.IsNullOrEmpty(request.id?.ToString()))
                 return Ok(lst);
             return Ok(lst.Where(z => z.Id == request.id).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost2")]
+        public ActionResult GetStudentViaPost2([FromQuery] GetStudentViaPostRequest request)
+        {
+            if (string.IsNullOrEmpty(request.id?.ToString()))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.Id == request.id).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost3/{id}")]
+        public ActionResult GetStudentViaPost3(string id, [FromQuery] GetStudentViaPostRequest2 request)
+        {
+            if (string.IsNullOrEmpty(request.FirstName) || string.IsNullOrEmpty(request.LastName))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.LastName == request.LastName && z.FirstName == request.FirstName).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost4")]
+        public ActionResult GetStudentViaPost4([FromBody] (string LastName, string FirstName) parameters)
+        {
+            if (string.IsNullOrEmpty(parameters.LastName))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.LastName == parameters.LastName).FirstOrDefault());
+        }
+        [HttpPost, Route("GetStudentViaPost5/{LastName}/{FirstName}")]
+        public ActionResult GetStudentViaPost5([FromRoute] GetStudentViaPostRequest2 request)
+        {
+            if (string.IsNullOrEmpty(request.LastName))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.LastName == request.LastName).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost6")]
+        public ActionResult GetStudentViaPost6([FromForm] GetStudentViaPostRequest2 request)
+        {
+            if (string.IsNullOrEmpty(request.LastName))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.LastName == request.LastName).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost7")]
+        public ActionResult GetStudentViaPost7([FromHeader(Name = "User-Agent")] string Agent)
+        {
+            return Ok(Agent);
+        }
+
+        [HttpGet, Route("GetStudentViaPost8")]
+        public ActionResult GetStudentViaPost8([FromQuery] GetStudentViaPostRequest2 request)
+        {
+            if (string.IsNullOrEmpty(request.LastName))
+                return Ok(lst);
+            return Ok(lst.Where(z => z.LastName == request.LastName).FirstOrDefault());
+        }
+
+        [HttpPost, Route("GetStudentViaPost9")]
+        public ActionResult GetStudentViaPost9(string[] array)
+        {
+            return Ok(string.Join(';', array));
+        }
+
+        [HttpPost, Route("GetStudentViaPost10")]
+        public ActionResult GetStudentViaPost10(List<GetStudentViaPostRequest2> lst)
+        {
+            return Ok(lst.Count());
+        }
+
+        [HttpPost("uploadFile")]
+        public ActionResult uploadFile(IFormFile file)
+        {
+            return Ok(file.Length);
+        }
+
+        [HttpPost("downloadFile")]
+        public ActionResult downloadFile(IFormFile file)
+        {
+            MemoryStream ms = new MemoryStream();
+            file.CopyTo(ms);
+            ms.Position = 0;
+            return File(ms,
+                  "application/png",
+                  "Sample.png");
         }
     }
 }
