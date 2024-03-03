@@ -16,6 +16,8 @@ namespace WebFormsCRUD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Write(Request.QueryString["param1"]);
+            Response.Write(Request.QueryString["param2"]);
             if (Page.IsPostBack)
                 return;
             gvCity.DataSource = getData();

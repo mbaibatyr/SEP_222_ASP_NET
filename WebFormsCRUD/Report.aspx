@@ -10,7 +10,12 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Button ID="MyButton" runat="server" Text="Button" OnClick="MyButton_Click" />
         </div>
+
+        <input type="submit" value ="MySubmit" />
+        <button>qwqwqwqwq</button>
     </form>
+    
 </body>
 </html>

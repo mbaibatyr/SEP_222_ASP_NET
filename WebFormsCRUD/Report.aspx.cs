@@ -53,5 +53,10 @@ namespace WebFormsCRUD
                 }
             }
         }
+
+        protected void MyButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MyCRUD.aspx?param1=hello&param2=step");
+        }
     }
 }
