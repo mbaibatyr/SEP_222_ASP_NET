@@ -27,8 +27,11 @@ namespace MyWebAPIBasicAuth.Auth
                 var psw = credArray[1];
 
                 /*
-                    проверка в БД                 
+                    проверка в БД            
                 */
+
+                string cred = "user1;1234";
+
 
                 var claims = new[]
                 {
