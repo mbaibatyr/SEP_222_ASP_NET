@@ -1,3 +1,6 @@
+using MyWebAPIBasicAuth.Auth;
+using Microsoft.AspNetCore.Authentication;
+
 namespace MyWebAPIBasicAuth
 {
     public class Program
@@ -5,11 +8,13 @@ namespace MyWebAPIBasicAuth
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
+            
 
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            
+            builder.Services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuth>("BasicAuthentication", null);
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -22,6 +27,7 @@ namespace MyWebAPIBasicAuth
                 app.UseSwaggerUI();
             }
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

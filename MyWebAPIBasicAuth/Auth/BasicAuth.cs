@@ -22,7 +22,7 @@ namespace MyWebAPIBasicAuth.Auth
                 // "user1;password"
                 var value = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
                 var credValue = Convert.FromBase64String(value.Parameter);
-                var credArray = Encoding.UTF8.GetString(credValue).Split(';');
+                var credArray = Encoding.UTF8.GetString(credValue).Split(':');
                 var login = credArray[0];
                 var psw = credArray[1];
 
