@@ -7,18 +7,23 @@ using System.Threading.Tasks;
 
 namespace DapperToObjects.Model
 {
-    public class country
+    public class Country
     {
         public int id { get; set; }
         public string name { get; set; }
-        public ICollection city { get; set; }
+        public List<City> city { get; set; }
 
     }
 
-    public class city
+    public class City
     {
         public int id { get; set; }
         public string name { get; set; }
         public int country_id { get; set; }
+
+        public static implicit operator List<object>(City v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
