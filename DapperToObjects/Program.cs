@@ -11,7 +11,8 @@ namespace DapperToObjects
         {
             //test_1("1");
             //test_2("1");
-            test_3("1");
+            //test_3("1");
+            test_4("1");
         }
 
         static void test_1(string id)
@@ -22,7 +23,7 @@ namespace DapperToObjects
                 sql += " select id, name, country_id from city where country_id = " + id;
                 var multy = db.QueryMultiple(sql);
                 Model.Country country = multy.Read<Model.Country>().FirstOrDefault();
-                var citi = multy.Read<Model.City>().ToList();                
+                var citi = multy.Read<Model.City>().ToList();
                 country.city = new List<Model.City>();
                 foreach (var item in citi)
                 {
@@ -64,6 +65,37 @@ namespace DapperToObjects
                                           country_id = p.country_id
                                       }).ToList()
                           }).FirstOrDefault();
+            }
+        }
+
+        static void test_4(string id)
+        {
+            using (SqlConnection db = new SqlConnection(conStr))
+            {
+                var sql3 = @"select co.id co_id, co.name co_name, ci.id ci_id, ci.name ci_name, ci.country_id
+                from country co join city ci on co.id = ci.country_id
+                where co.id = " + id;
+
+                var result = db.Query<dynamic>(sql3);
+
+                var json = JsonConvert.SerializeObject(
+                 result
+                     .Select(z => new
+                     {
+                         id = z.co_id,
+                         name = z.co_name,
+                         city = result
+                                     .Select(z => new
+                                     {
+                                         id = z.ci_id,
+                                         name = z.ci_name,
+                                         country_id = z.country_id
+                                     })
+
+                     })
+                     .FirstOrDefault()
+         );
+                var country = JsonConvert.DeserializeObject<Model.Country>(json);
             }
         }
 
