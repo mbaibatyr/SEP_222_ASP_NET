@@ -10,7 +10,8 @@ namespace DapperToObjects
         static void Main(string[] args)
         {
             //test_1("1");
-            test_2("1");
+            //test_2("1");
+            test_3("1");
         }
 
         static void test_1(string id)
@@ -37,6 +38,32 @@ namespace DapperToObjects
                 var sql = "select co.*, city.* from country co join city on co.id = city.country_id where co.id = 1 for json auto, Without_Array_Wrapper";
                 var json = db.ExecuteScalar<string>(sql);
                 var country = JsonConvert.DeserializeObject<Model.Country>(json);
+            }
+        }
+
+        static void test_3(string id)
+        {
+            using (SqlConnection db = new SqlConnection(conStr))
+            {
+                var sql3 = @"select co.id co_id, co.name co_name, ci.id ci_id, ci.name ci_name, ci.country_id
+                from country co join city ci on co.id = ci.country_id
+                where co.id = " + id;
+
+                var result = db.Query<dynamic>(sql3);
+
+                var co = (from p in result
+                          select new Model.Country
+                          {
+                              id = p.co_id,
+                              name = p.co_name,
+                              city = (from z in result
+                                      select new Model.City
+                                      {
+                                          id = p.ci_id,
+                                          name = p.ci_name,
+                                          country_id = p.country_id
+                                      }).ToList()
+                          }).FirstOrDefault();
             }
         }
 
