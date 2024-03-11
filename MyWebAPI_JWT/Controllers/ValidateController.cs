@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using MyWebAPI_JWT.Model;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace MyWebAPI_JWT.Controllers
@@ -35,7 +36,7 @@ namespace MyWebAPI_JWT.Controllers
                 var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
                 var claims = new[] {
-                      new Claim("role", "admin"),
+                      new Claim("myRole", "admin"),
                       new Claim("dateBirth", "2000-01-01")
             };
 
@@ -64,5 +65,26 @@ namespace MyWebAPI_JWT.Controllers
                 });
             }
         }
+
+        [HttpGet, Authorize, Route("GetTest/{name}")]
+        public ActionResult GetTest(string name)
+        {
+            return Ok("Hello " + name + " " + User.FindFirst("myRole")?.Value);
+        }
+
+
+
+
+        
+        //[HttpGet, Route("GetRefreshToken")]
+        //public ActionResult GetRefreshToken()
+        //{
+        //    var secureRandomBytes = new byte[32];
+
+        //    using var randomNumberGenerator = RandomNumberGenerator.Create();
+        //    randomNumberGenerator.GetBytes(secureRandomBytes);
+        //    var refreshToken = Convert.ToBase64String(secureRandomBytes);
+        //    return Ok(refreshToken);
+        //}
     }
 }
