@@ -51,7 +51,7 @@ namespace MyWebAPI_JWT.Controllers
                 return Ok(new ReturnStatus
                 {
                     status = StatusEnum.OK,
-                    result = "ok"
+                    result = sToken
                 });
             }
             catch (Exception err)
