@@ -29,11 +29,16 @@ namespace MyWebAPI_JWT.Controllers
 
                 /*
                  проверка в БД
-
                  */
 
+                //return Unauthorized(new ReturnStatus
+                //{
+                //    status = StatusEnum.ERROR,
+                //    result = "error"
+                //});
+
                 var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
-                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512);
 
                 var claims = new[] {
                       new Claim("myRole", "admin"),
