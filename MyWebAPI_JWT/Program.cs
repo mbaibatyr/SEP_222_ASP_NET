@@ -47,6 +47,7 @@ namespace MyWebAPI_JWT
                 app.UseSwaggerUI();
             }
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
