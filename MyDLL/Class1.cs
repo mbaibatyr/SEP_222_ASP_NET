@@ -1,0 +1,42 @@
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyDLL
+{
+    public class MyClass
+    {
+        public ReturnClass GetHello(DataTable dt, string st)
+        {
+            return new ReturnClass()
+            {
+                Data = dt.Rows[0][0] + " Test",
+                Count = st.Length
+            };
+        }
+
+        public string GetPdf(string fileName)
+        {
+            using (PdfReader reader = new PdfReader(fileName))
+            {
+                StringBuilder sb = new StringBuilder();
+                for (int i = 1; i <= reader.NumberOfPages; i++)
+                {
+                    sb.AppendLine(PdfTextExtractor.GetTextFromPage(reader, i));
+                }
+                return sb.ToString();
+            }
+        }
+    }
+
+    public class ReturnClass
+    {
+        public string Data { get; set; }
+        public int Count { get; set; }
+    }
+}

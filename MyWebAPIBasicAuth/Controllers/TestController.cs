@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using System.Security.Claims;
 
 namespace MyWebAPIBasicAuth.Controllers
@@ -9,11 +11,16 @@ namespace MyWebAPIBasicAuth.Controllers
     [ApiController]
     //[Authorize]
 
+    
     public class TestController : ControllerBase
     {
         [HttpGet("SayHello")]
+        //[DisableCors()]
         public ActionResult SayHello(string name)
         {
+            //string st = null;
+            //Request.Headers.TryGetValue("name123", out StringValues headerValue);
+            
             return Ok($"Hello {name} {User.Identity.Name}  {User.FindFirstValue("psw")}");
         }
 
