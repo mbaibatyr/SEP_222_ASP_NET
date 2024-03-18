@@ -22,7 +22,10 @@ $(document).ready(function () {
                 type: "GET",
                 url: "test/getCityAll",
                 success: function (data) {
-                    console.warn(data);
+                    $("#cbCity").empty();
+                    for (let i = 0; i < data.length; i++) {
+                        $("#cbCity").append('<option value=' + data[i].id + '>' + data[i].name + '</option >');
+                    };
                     let html = '';
                     html += "<table border='1' cellpadding='1' cellspacing='1' width='500'>";
                     html += "<tr bgcolor='#ffd400'>";
