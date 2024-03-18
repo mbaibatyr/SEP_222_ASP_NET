@@ -64,6 +64,28 @@ function showModal() {
     $("#myModal").modal("show");
 }
 
+function createCity() {
+    var MyData = {
+        "id": 4,
+        "name": "Aktobe"
+    };
+    $.ajax
+        ({
+            type: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            url: "test/createCity",
+            data: JSON.stringify(MyData),
+            success: function (data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log("error")
+            }
+        });
+}
+
 function confirm() {
 
     $.confirm({
