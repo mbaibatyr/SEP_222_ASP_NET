@@ -60,7 +60,12 @@ function F1() {
     alert('hello step');
 }
 
+function showModal() {
+    $("#myModal").modal("show");
+}
+
 function confirm() {
+
     $.confirm({
         title: 'Are you sure to delete book!',
         content: 'Deletion!',
