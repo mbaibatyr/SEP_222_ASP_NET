@@ -28,6 +28,16 @@
 
 
             });
+
+            $("#myButton2").click(function () {
+                var st = `<table border='1'>`;
+                st += '<tr><td>id</td><td>name</td></tr>';
+                st += '<tr><td>1</td><td>Алматы</td></tr>';
+                st += '<tr><td>2</td><td>Астана</td></tr>';
+                st += '</table>';
+                $("#divTest").html(st);
+
+            });
         })
         function F1() {
             alert('hello step');
@@ -39,7 +49,7 @@
     <button id="myButton">
         Hello
     </button>
-    <button id="myButton2" onclick="F1()">
+    <button id="myButton2">
         Hello2
     </button>
     <input type="text" value="hello world" id="tbTest" />
