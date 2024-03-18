@@ -15,12 +15,26 @@ $(document).ready(function () {
         //             console.log("error")
         //         }
         //     });
+
+
         $.ajax
             ({
                 type: "GET",
                 url: "test/getCityAll",
                 success: function (data) {
-                    console.log(data);
+                    console.warn(data);
+                    let html = '';
+                    html += "<table border='1' cellpadding='1' cellspacing='1' width='500'>";
+                    html += "<tr bgcolor='#ffd400'>";
+                    html += "<td class='text-center'>id</td>"
+                    html += "<td class='text-center'>name</td>";
+                    html += "</tr>";
+                    $.each(data, function (i, item) {
+                        html += "<tr><td>" + item.id + "</td>" +
+                            "<td>" + item.name + "</td></tr>";
+                    });
+                    html += "</table >";
+                    $("#divTest").html(html);
                 },
                 error: function () {
                     console.log("error")
