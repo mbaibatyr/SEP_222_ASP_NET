@@ -59,3 +59,19 @@ $(document).ready(function () {
 function F1() {
     alert('hello step');
 }
+
+function confirm() {
+    $.confirm({
+        title: 'Are you sure to delete book!',
+        content: 'Deletion!',
+        buttons: {
+            confirm: function () {
+                //$.alert('go to delete');
+
+            },
+            cancel: function () {
+                //$.alert('cancel delete!');
+            }
+        }
+    });
+}

@@ -4,10 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/jquery-confirm.css" rel="stylesheet" />
+
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-confirm.js"></script>
     <script src="Scripts/MyJS.js"></script>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -21,9 +24,16 @@
     <div id="divTest">
 
     </div>
-    <select id="cbCity">
-        <!-- <option></option> -->
-    </select>
+    <div class="row">
+        <div class="col-md-4">
+            <select id="cbCity" class="form-control">
+            </select>
+        </div>
+    </div>
+
+    <button onclick="confirm()">
+        confirm1
+    </button>
 </body>
 
 </html>
