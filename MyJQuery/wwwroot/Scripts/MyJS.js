@@ -61,7 +61,8 @@ function F1() {
 }
 
 function showModal() {
-    $("#myModal").modal("show");
+    console.log('show');
+    $("#myModal").modal("show");    
 }
 
 function createCity() {
