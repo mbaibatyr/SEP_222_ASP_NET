@@ -19,7 +19,13 @@ $(document).ready(function () {
 
         $.ajax
             ({
-                type: "GET",
+                type: "GET",                
+                //CORS: true,
+                //contentType: 'application/json',
+                //secure: true,
+                //headers: {
+                //    'Access-Control-Allow-Origin': '*',
+                //},
                 url: "test/getCityAll",
                 success: function (data) {
                     $("#cbCity").empty();
