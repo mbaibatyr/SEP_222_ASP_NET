@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- <link href="Content/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="Content/jquery-confirm.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-confirm.js"></script>
+    <script src="Scripts/MyJS.js"></script>
+    <style>
+        .column {
+            float: left;
+            width: 33%;
+            padding: 20px;
+            height: 200px;
+        }
+    
+        .column2 {
+            top: 200px;
+            float: left;
+            width: 99%;
+            padding: 20px;
+            height: 500px;
+        }
+    
+        .content {
+            max-width: 1500px;
+            margin: auto;
+        }
+    </style>
+    
+    <body>
+        <div class="content">
+            <div class="column" style="background-color:#aaa;">
+                <p>Поиск</p>
+                <select id="cat" class="form-control">
+                    <option value="0">Все</option>
+                    <option value="1">Джаз</option>
+                    <option value="2">Рок</option>
+            </select>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <p>Добавление нового трека</p>
+            <button class="btn btn-default">
+                Добавить трек
+            </button>
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <p>Выберите формат отчета</p>
+            <select id="report" class="form-control">
+                <option value="1">Excel</option>
+                <option value="2">CSV</option>
+            </select>
+        </div>
+        <div class="column2" style="background-color:#ddd;">
+            <table border="1" width="100%">
+                <tr>
+                    <td>id</td>
+                    <td>Категория</td>
+                    <td>Название трека</td>
+                    <td>Длительность</td>
+                    <td>Изменение</td>
+                    <td>Удаление</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Джаз</td>
+                    <td>трек 1</td>
+                    <td>5.2</td>
+                    <td><button class="btn btn-default">
+                            Изменить
+                        </button></td>
+                    <td><button class="btn btn-default">
+                            Удалить
+                        </button></td>
+                </tr>
+            </table>
+        </div>
+    <!-- </div> -->
+    </div>
+</html>

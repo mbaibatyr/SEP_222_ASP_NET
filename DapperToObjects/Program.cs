@@ -1,6 +1,7 @@
 ﻿using System.Data.SqlClient;
 using Newtonsoft.Json;
 using Dapper;
+using RestSharp;
 
 namespace DapperToObjects
 {
@@ -12,7 +13,13 @@ namespace DapperToObjects
             //test_1("1");
             //test_2("1");
             //test_3("1");
-            test_4("1");
+            //test_4("1");
+
+            var client = new RestClient();
+            var request = new RestRequest("http://localhost:5099/test/getCityAll", Method.Get);
+            RestResponse response = client.Execute(request);
+            Console.WriteLine(response.Content);
+
         }
 
         static void test_1(string id)

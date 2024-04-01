@@ -29,7 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperToObjects", "DapperTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebAPI_JWT", "MyWebAPI_JWT\MyWebAPI_JWT.csproj", "{131C7381-2300-4951-9392-4E7809906613}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyJQuery", "MyJQuery\MyJQuery.csproj", "{90B356EA-B301-49D0-ABAA-CB1E00ADC726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyJQuery", "MyJQuery\MyJQuery.csproj", "{90B356EA-B301-49D0-ABAA-CB1E00ADC726}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyReact", "MyReact\MyReact.csproj", "{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{90B356EA-B301-49D0-ABAA-CB1E00ADC726}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90B356EA-B301-49D0-ABAA-CB1E00ADC726}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90B356EA-B301-49D0-ABAA-CB1E00ADC726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
