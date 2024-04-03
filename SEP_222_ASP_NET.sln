@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebAPI_JWT", "MyWebAPI_JW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyJQuery", "MyJQuery\MyJQuery.csproj", "{90B356EA-B301-49D0-ABAA-CB1E00ADC726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyReact", "MyReact\MyReact.csproj", "{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReact", "MyReact\MyReact.csproj", "{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyReact2", "MyReact2\MyReact2.csproj", "{D05B6DD6-2468-48D0-8D38-EA386A09890E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FA6CFFF-3D47-4418-8CAB-5E62A9E362C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D05B6DD6-2468-48D0-8D38-EA386A09890E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05B6DD6-2468-48D0-8D38-EA386A09890E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05B6DD6-2468-48D0-8D38-EA386A09890E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05B6DD6-2468-48D0-8D38-EA386A09890E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

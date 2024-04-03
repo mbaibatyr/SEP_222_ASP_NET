@@ -1,0 +1,29 @@
+/* .ant-table-tbody>tr>td {
+    padding: 6px !important;
+}
+
+.ant-table-thead>tr>th {
+    padding: 8px !important;
+} */
+
+.ant-table-tbody>tr>td.ant-table-cell-row-hover {
+    background-color: #eeeeea !important;
+}
+
+.table-striped-rows tr:nth-child(2n) td {
+    background-color: #fbfbfb;
+}
+
+.table-striped-rows thead {
+    background-color: #f1f1f1;
+}
+
+.ant-table-thead .ant-table-cell {
+    background-color: #e4ebec !important;
+}
+
+/* .ant-table-row {
+    font-size: 20px;
+    height: 64px;
+    d4e3e5
+} */

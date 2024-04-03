@@ -1,0 +1,63 @@
+{
+  "name": "IncidentAssignmentWeb",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@ant-design/plots": "^1.2.5",
+    "@fireworks-js/react": "^2.10.2",
+    "antd": "^5.1.6",
+    "bootstrap": "~4.6.1",
+    "canvasjs-react-charts": "^1.0.5",
+    "connected-react-router": "6.5.2",
+    "history": "4.10.1",
+    "jquery": "~3.6.0",
+    "merge": "2.1.1",
+    "popper.js": "^1.16.1",
+    "react": "~16.14.0",
+    "react-countdown": "^2.3.5",
+    "react-dice-roll": "^1.2.2",
+    "react-dom": "~16.14.0",
+    "react-double-marquee": "^1.1.0",
+    "react-html-parser": "^2.0.2",
+    "react-redux": "~7.2.6",
+    "react-router": "~5.2.1",
+    "react-router-dom": "~5.3.0",
+    "reactstrap": "~8.10.1",
+    "redux": "4.1.2",
+    "redux-thunk": "2.4.1"
+  },
+  "devDependencies": {
+    "@types/history": "4.7.10",
+    "@types/jest": "24.0.19",
+    "@types/node": "12.11.6",
+    "@types/react": "~16.9.14",
+    "@types/react-dom": "~16.9.14",
+    "@types/react-redux": "~7.1.22",
+    "@types/react-router": "~5.1.17",
+    "@types/react-router-dom": "~5.3.0",
+    "@types/reactstrap": "~8.7.2",
+    "cross-env": "6.0.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "nan": "^2.15.0",
+    "react-scripts": "^5.0.0",
+    "typescript": "3.6.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/**/*.ts ./src/**/*.jsx"
+  },
+  "eslintConfig": {},
+  "resolutions": {
+    "url-parse": ">=1.5.0",
+    "lodash": ">=4.17.21"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

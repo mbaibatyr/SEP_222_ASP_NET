@@ -1,0 +1,26 @@
+td,
+th {
+    padding: 1px;
+    padding-left: 2px;
+}
+
+table {
+    font-family: Calibri
+}
+
+.ant-upload-list-item-name {
+
+    position: absolute;
+}
+
+/* .upload-list-inline .ant-upload-list-item {
+    float: left;
+    width: 200px;
+    margin-inline-end: 8px;
+    position: absolute;
+}
+
+.ant-upload-rtl.upload-list-inline .ant-upload-list-item {
+    float: right;
+    position: absolute;
+} */
