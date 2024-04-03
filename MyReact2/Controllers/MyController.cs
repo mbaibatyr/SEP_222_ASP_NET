@@ -5,6 +5,7 @@ using MyReact2.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace MyReact2.Controllers
 {
@@ -16,6 +17,7 @@ namespace MyReact2.Controllers
         [HttpGet, Route("GetCity")]
         public ActionResult GetCity()
         {
+            //Thread.Sleep(3000);
             var model = new List<City>()
             {
                 new City() { id = 1, name="Almaty"},

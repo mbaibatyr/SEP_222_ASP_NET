@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { SyncOutlined, MessageOutlined, PhoneOutlined, MailOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
-import { Select, Button, Space, Table, Input, DatePicker, Tag } from 'antd';
+import { Select, Button, Space, Table, Input, DatePicker, Tag, Modal } from 'antd';
 import dayjs from 'dayjs';
 import "./table.css"
 
@@ -45,6 +45,25 @@ const Main = () => {
 
     return (
         <div>
+            <Modal>
+
+            </Modal>
+            <Space
+                direction="horizontal"
+            >
+                <Button
+                    onClick={() => {
+                        fetchData();
+                    }}
+                    icon={<SearchOutlined />}
+                    style={{
+                        color: 'red', fontWeight: 'bold'
+                    }}
+                >
+                    Найти
+                </Button>
+
+            </Space>
             <Table
                 dataSource={data}
                 columns={columns}
