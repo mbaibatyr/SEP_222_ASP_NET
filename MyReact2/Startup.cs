@@ -22,12 +22,12 @@ namespace MyReact2
         public void ConfigureServices(IServiceCollection services)
         {            
 
-            services.AddCors(o => o.AddPolicy("AllowAnyCorsPolicy", builder =>
-            {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
-            }));
+            //services.AddCors(o => o.AddPolicy("AllowAnyCorsPolicy", builder =>
+            //{
+            //    builder.AllowAnyOrigin()
+            //           .AllowAnyMethod()
+            //           .AllowAnyHeader();
+            //}));
             //services.AddTransient<IIncidentAssignment, IncidentAssignmentService>();
 
             services.AddControllers();
@@ -49,7 +49,7 @@ namespace MyReact2
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
             app.UseRouting();
-            app.UseCors("AllowAnyCorsPolicy");
+            //app.UseCors("AllowAnyCorsPolicy");
 
             app.UseAuthentication();
             app.UseAuthorization();
