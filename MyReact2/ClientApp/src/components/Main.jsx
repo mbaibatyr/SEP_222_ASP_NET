@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { SearchOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
-import { Select, Button, Space, Table, Input, DatePicker, Tag, Modal } from 'antd';
+import { Select, Button, Space, Table, Input, DatePicker, Tag, Modal, notification } from 'antd';
 import dayjs from 'dayjs';
 import "./table.css"
 
@@ -23,14 +23,25 @@ const Main = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [id, setId] = useState('');
+
 
     const fetchData = () => {
         setLoading(true);
+        var id2 = '';
+        if (id == '' || id == null) {
+            id2 = 'all';
+        }
+        else {
+            id2 = id;
+        }
+
+
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         };
-        fetch(`My/GetCity`, requestOptions)
+        fetch(`My/GetCityAll/${id2}`, requestOptions)
             .then(response => {
                 return response.json()
             })
@@ -63,6 +74,14 @@ const Main = () => {
             <Space
                 direction="horizontal"
             >
+                <Input
+                    placeholder="Введите id или all"
+                    value={id}
+                    onChange={(e) => setId(e.target.value)}
+                    style={{
+                        width: 50
+                    }}
+                />
                 <Button
                     onClick={() => {
                         fetchData();
@@ -85,6 +104,25 @@ const Main = () => {
                     }}
                 >
                     Открыть модальное окно
+                </Button>
+
+                <Button
+                    onClick={() => {
+                        notification.error({
+                            message: "Info",
+                            description: (
+                                <>
+                                    Title is empty
+                                </>
+                            )
+                        });
+                    }}
+                    icon={<SearchOutlined />}
+                    style={{
+                        color: 'red', fontWeight: 'bold'
+                    }}
+                >
+                    Открыть нотификауция
                 </Button>
 
 

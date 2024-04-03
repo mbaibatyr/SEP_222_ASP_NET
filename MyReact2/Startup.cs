@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyReact2.Abstract;
+using MyReact2.Service;
 using System;
 
 namespace MyReact2
@@ -28,7 +30,8 @@ namespace MyReact2
             //           .AllowAnyMethod()
             //           .AllowAnyHeader();
             //}));
-            //services.AddTransient<IIncidentAssignment, IncidentAssignmentService>();
+            
+            services.AddScoped<ICity, CityService>();
 
             services.AddControllers();
             services.AddAuthentication();
