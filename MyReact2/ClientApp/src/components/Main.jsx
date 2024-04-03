@@ -22,6 +22,7 @@ const Main = () => {
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const fetchData = () => {
         setLoading(true);
@@ -45,8 +46,19 @@ const Main = () => {
 
     return (
         <div>
-            <Modal>
+            <Modal
+                title="Basic Modal"
+                open={isModalOpen}
+                onOk={() => {
+                    setIsModalOpen(false);
+                }}
+                onCancel={() => {
+                    setIsModalOpen(false);
+                }}>
 
+                <p>Some contents...</p>
+                <p>Some contents...</p>
+                <p>Some contents...</p>
             </Modal>
             <Space
                 direction="horizontal"
@@ -62,6 +74,20 @@ const Main = () => {
                 >
                     Найти
                 </Button>
+
+                <Button
+                    onClick={() => {
+                        setIsModalOpen(true);
+                    }}
+                    icon={<SearchOutlined />}
+                    style={{
+                        color: 'red', fontWeight: 'bold'
+                    }}
+                >
+                    Открыть модальное окно
+                </Button>
+
+
 
             </Space>
             <Table
