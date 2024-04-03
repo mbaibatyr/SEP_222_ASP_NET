@@ -46,3 +46,43 @@ namespace MyReact2.Controllers
         }
     }
 }
+
+/*
+ 
+ ALTER proc [dbo].[pCity] --0, 'Актобе'
+@id int,
+@name nvarchar(100)
+as
+if @id = 0
+	begin
+		insert into City (name)
+		values (@name)
+		select 'ok'
+	end 
+	else
+	begin
+		update City
+		set name = @name
+		where id = @id
+		select 'ok'
+	end
+GO
+
+
+ALTER proc [dbo].[pCity] ; 2--null
+@id varchar(10)
+as
+if @id = 'all'
+
+    select id,
+            name
+
+    from city
+else
+    select id,
+            name
+
+    from city
+
+    where id = @id
+ */
