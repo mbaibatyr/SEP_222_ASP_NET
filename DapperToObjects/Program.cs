@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Dapper;
 using RestSharp;
+using Service;
 
 namespace DapperToObjects
 {
@@ -10,15 +11,23 @@ namespace DapperToObjects
         static string conStr = "Server=206-P;Database=testdb;Trusted_Connection=True;";
         static void Main(string[] args)
         {
+            MyServiceSoapClient.EndpointConfiguration config =
+                MyServiceSoapClient.EndpointConfiguration.MyServiceSoap;
+
+            MyServiceSoapClient client = new MyServiceSoapClient(config);
+            var result = client.HelloWorldAsync("step 2024");
+            Console.WriteLine(result.Result.Body.HelloWorldResult);
+            Console.ReadLine();
+
             //test_1("1");
             //test_2("1");
             //test_3("1");
             //test_4("1");
 
-            var client = new RestClient();
-            var request = new RestRequest("http://localhost:5099/test/getCityAll", Method.Get);
-            RestResponse response = client.Execute(request);
-            Console.WriteLine(response.Content);
+            //var client = new RestClient();
+            //var request = new RestRequest("http://localhost:5099/test/getCityAll", Method.Get);
+            //RestResponse response = client.Execute(request);
+            //Console.WriteLine(response.Content);
 
         }
 
