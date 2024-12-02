@@ -45,7 +45,7 @@
         </asp:Panel>
         <asp:GridView ID="gvCity" runat="server" CssClass="GridView_With_GridLines" DataKeyNames="id,name"
             AllowPaging="True" BackColor="White" BorderColor="#3366CC" BorderStyle="None"
-            BorderWidth="1px" CellPadding="4" PageSize="21" AutoGenerateColumns="False" OnSelectedIndexChanged="gvCity_SelectedIndexChanged">
+            BorderWidth="1px" CellPadding="4" PageSize="21" AutoGenerateColumns="False" OnSelectedIndexChanged="btDelete_Click">
             <RowStyle BackColor="White" ForeColor="#003399" />
             <SelectedRowStyle BackColor="#FFD789" BorderStyle="Groove" BorderWidth="2" />
             <PagerSettings Position="TopAndBottom" />
